@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Daily Brief" />
+  <title>Daily Brief Hub</title>
+  <link rel="manifest" href="manifest.json" />
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --muted: #666;
+      --rule: #ddd;
+      --accent: #b5000c;
+      --bg: #faf9f7;
+      --card: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    /* ── MASTHEAD ── */
+    header {
+      border-bottom: 3px double var(--ink);
+      padding: 16px 20px 12px;
+      text-align: center;
+      background: var(--card);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .masthead-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--muted);
+      font-family: 'Helvetica Neue', sans-serif;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    header h1 {
+      font-size: clamp(28px, 8vw, 52px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+    header h1 span { color: var(--accent); }
+    .masthead-tagline {
+      font-style: italic;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 4px;
+      border-top: 1px solid var(--rule);
+      padding-top: 6px;
+    }
+
+    /* ── LAYOUT ── */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 20px 16px 60px;
+    }
+
+    /* ── LATEST BRIEF ── */
+    #latest-section { margin-bottom: 36px; }
+
+    .edition-label {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .brief-headline {
+      font-size: clamp(22px, 5vw, 34px);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 6px;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 10px;
+    }
+    .brief-meta {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .brief-body {
+      font-size: 16px;
+      line-height: 1.75;
+      column-count: 1;
+    }
+    @media (min-width: 600px) {
+      .brief-body { column-count: 2; column-gap: 28px; }
+    }
+
+    /* Markdown-rendered content styles */
+    .brief-body h1, .brief-body h2 { column-span: all; }
+    .brief-body h2 {
+      font-size: 18px;
+      margin: 18px 0 8px;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 4px;
+      color: var(--accent);
+      font-family: 'Helvetica Neue', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-size: 11px;
+    }
+    .brief-body h3 {
+      font-size: 15px;
+      margin: 14px 0 4px;
+      font-style: italic;
+    }
+    .brief-body p { margin-bottom: 12px; }
+    .brief-body ul, .brief-body ol {
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+    .brief-body li { margin-bottom: 4px; }
+    .brief-body strong { font-weight: 700; }
+    .brief-body em { font-style: italic; }
+    .brief-body hr {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 16px 0;
+      column-span: all;
+    }
+
+    /* ── ARCHIVE ── */
+    #archive-section {
+      border-top: 3px double var(--ink);
+      padding-top: 20px;
+    }
+    #archive-section h2 {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .archive-list { list-style: none; }
+    .archive-list li {
+      border-bottom: 1px solid var(--rule);
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: color .15s;
+    }
+    .archive-list li:hover .archive-title { color: var(--accent); }
+    .archive-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .archive-date {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      white-space: nowrap;
+      margin-left: 12px;
+    }
+    .archive-arrow { color: var(--muted); font-size: 12px; margin-left: 8px; }
+
+    /* ── MODAL (archive read) ── */
+    #modal-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.5);
+      z-index: 100;
+      align-items: flex-end;
+    }
+    #modal-overlay.open { display: flex; }
+    #modal-box {
+      background: var(--card);
+      width: 100%;
+      max-height: 88vh;
+      border-radius: 16px 16px 0 0;
+      overflow-y: auto;
+      padding: 24px 20px 40px;
+    }
+    #modal-close {
+      float: right;
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: var(--muted);
+      line-height: 1;
+    }
+    #modal-headline {
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 6px;
+      clear: right;
+    }
+    #modal-meta {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 10px;
+    }
+    #modal-body { font-size: 15px; line-height: 1.75; }
+
+    /* ── EMPTY / LOADING ── */
+    .state-msg {
+      text-align: center;
+      color: var(--muted);
+      font-style: italic;
+      padding: 40px 0;
+      font-size: 15px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      padding: 20px;
+      border-top: 1px solid var(--rule);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="masthead-top">
+    <span id="hdr-date"></span>
+    <span>Personal Edition</span>
+    <span id="hdr-count"></span>
+  </div>
+  <h1>Daily <span>Brief</span></h1>
+  <div class="masthead-tagline">Your personalised intelligence, delivered daily</div>
+</header>
+
+<main>
+  <!-- Latest -->
+  <section id="latest-section">
+    <div id="latest-content"><p class="state-msg">Loading today's brief…</p></div>
+  </section>
+
+  <!-- Archive -->
+  <section id="archive-section" style="display:none">
+    <h2>Previous Editions</h2>
+    <ul class="archive-list" id="archive-list"></ul>
+  </section>
+</main>
+
+<!-- Read-more modal -->
+<div id="modal-overlay">
+  <div id="modal-box">
+    <button id="modal-close">✕</button>
+    <div id="modal-headline"></div>
+    <div id="modal-meta"></div>
+    <div id="modal-body" class="brief-body"></div>
+  </div>
+</div>
+
+<footer>Daily Brief Hub &bull; <span id="footer-year"></span></footer>
+
+<script>
+  // ── tiny markdown renderer ──────────────────────────────────────────────
+  function renderMd(md) {
+    if (!md) return '';
+    return md
+      .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+      .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+      .replace(/^# (.+)$/gm, '<h2>$1</h2>')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/^---$/gm, '<hr>')
+      .replace(/^[-*] (.+)$/gm, '<li>$1</li>')
+      .replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>')
+      .replace(/\n\n+/g, '</p><p>')
+      .replace(/^(?!<[hul]|<hr)(.+)$/gm, '$1')
+      .replace(/^<\/p><p>(<[h2-6])/gm, '$1')
+      .split('\n').filter(l => l.trim()).join('\n');
+  }
+
+  function wrapBody(html) {
+    return '<p>' + html + '</p>';
+  }
+
+  // ── date helpers ────────────────────────────────────────────────────────
+  function fmtDate(iso) {
+    const d = new Date(iso);
+    return d.toLocaleDateString('en-GB', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+  }
+
+  // ── header ──────────────────────────────────────────────────────────────
+  document.getElementById('hdr-date').textContent = new Date().toLocaleDateString('en-GB', { weekday:'short', day:'numeric', month:'short', year:'numeric' });
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+  // ── load index ──────────────────────────────────────────────────────────
+  async function loadIndex() {
+    const res = await fetch('briefs/index.json?t=' + Date.now());
+    if (!res.ok) throw new Error('no index');
+    return res.json();
+  }
+
+  async function loadBrief(filename) {
+    const res = await fetch('briefs/' + filename + '?t=' + Date.now());
+    if (!res.ok) throw new Error('not found');
+    return res.json();
+  }
+
+  function renderLatest(brief) {
+    const sec = document.getElementById('latest-content');
+    sec.innerHTML = `
+      <div class="edition-label">Latest Edition</div>
+      <div class="brief-headline">${brief.title}</div>
+      <div class="brief-meta">${fmtDate(brief.date)}</div>
+      <div class="brief-body">${wrapBody(renderMd(brief.content))}</div>
+    `;
+  }
+
+  function renderArchive(entries) {
+    if (entries.length === 0) return;
+    const sec = document.getElementById('archive-section');
+    const list = document.getElementById('archive-list');
+    sec.style.display = '';
+    list.innerHTML = '';
+    entries.forEach(e => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <span class="archive-title">${e.title}</span>
+        <span style="display:flex;align-items:center;gap:4px">
+          <span class="archive-date">${fmtDate(e.date)}</span>
+          <span class="archive-arrow">›</span>
+        </span>`;
+      li.addEventListener('click', () => openModal(e.file));
+      list.appendChild(li);
+    });
+  }
+
+  // ── modal ────────────────────────────────────────────────────────────────
+  async function openModal(file) {
+    const brief = await loadBrief(file);
+    document.getElementById('modal-headline').textContent = brief.title;
+    document.getElementById('modal-meta').textContent = fmtDate(brief.date);
+    document.getElementById('modal-body').innerHTML = wrapBody(renderMd(brief.content));
+    document.getElementById('modal-overlay').classList.add('open');
+  }
+  document.getElementById('modal-close').addEventListener('click', () => {
+    document.getElementById('modal-overlay').classList.remove('open');
+  });
+  document.getElementById('modal-overlay').addEventListener('click', e => {
+    if (e.target === document.getElementById('modal-overlay'))
+      document.getElementById('modal-overlay').classList.remove('open');
+  });
+
+  // ── main ─────────────────────────────────────────────────────────────────
+  (async () => {
+    try {
+      const index = await loadIndex();
+      document.getElementById('hdr-count').textContent = index.briefs.length + ' edition' + (index.briefs.length !== 1 ? 's' : '');
+
+      if (index.briefs.length === 0) {
+        document.getElementById('latest-content').innerHTML = '<p class="state-msg">No briefs yet — check back soon.</p>';
+        return;
+      }
+
+      const [latest, ...rest] = index.briefs;
+      const latestBrief = await loadBrief(latest.file);
+      renderLatest(latestBrief);
+      renderArchive(rest);
+    } catch {
+      document.getElementById('latest-content').innerHTML =
+        '<p class="state-msg">Could not load brief. Please refresh.</p>';
+    }
+  })();
+</script>
+</body>
+</html>

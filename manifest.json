@@ -1,0 +1,16 @@
+{
+  "name": "Daily Brief Hub",
+  "short_name": "Daily Brief",
+  "description": "Your personalised daily intelligence briefing",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf9f7",
+  "theme_color": "#1a1a1a",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
