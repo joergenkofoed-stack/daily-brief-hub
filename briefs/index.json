@@ -1,13 +1,18 @@
 {
   "briefs": [
     {
+      "file": "2026-05-23.json",
+      "title": "Daily Brief — Saturday, May 23, 2026",
+      "date": "2026-05-23"
+    },
+    {
       "file": "2026-05-22.json",
-      "title": "Daily Brief \u2014 Friday, May 22, 2026",
+      "title": "Daily Brief — Friday, May 22, 2026",
       "date": "2026-05-22"
     },
     {
       "file": "2026-05-21.json",
-      "title": "Daily Brief \u2014 Thursday, May 21, 2026",
+      "title": "Daily Brief — Thursday, May 21, 2026",
       "date": "2026-05-21"
     }
   ]
