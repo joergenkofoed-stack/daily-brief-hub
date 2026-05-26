@@ -1,28 +1,33 @@
 {
   "briefs": [
     {
+      "file": "2026-05-26.json",
+      "title": "Daily Brief \u2014 Tuesday, May 26, 2026",
+      "date": "2026-05-26"
+    },
+    {
       "file": "2026-05-25.json",
-      "title": "Daily Brief — Sunday, May 25, 2026",
+      "title": "Daily Brief \u2014 Sunday, May 25, 2026",
       "date": "2026-05-25"
     },
     {
       "file": "2026-05-24.json",
-      "title": "Daily Brief — Sunday, May 24, 2026",
+      "title": "Daily Brief \u2014 Sunday, May 24, 2026",
       "date": "2026-05-24"
     },
     {
       "file": "2026-05-23.json",
-      "title": "Daily Brief — Saturday, May 23, 2026",
+      "title": "Daily Brief \u2014 Saturday, May 23, 2026",
       "date": "2026-05-23"
     },
     {
       "file": "2026-05-22.json",
-      "title": "Daily Brief — Friday, May 22, 2026",
+      "title": "Daily Brief \u2014 Friday, May 22, 2026",
       "date": "2026-05-22"
     },
     {
       "file": "2026-05-21.json",
-      "title": "Daily Brief — Thursday, May 21, 2026",
+      "title": "Daily Brief \u2014 Thursday, May 21, 2026",
       "date": "2026-05-21"
     }
   ]
