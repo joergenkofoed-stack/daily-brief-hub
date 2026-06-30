@@ -1,84 +1,89 @@
 {
-  "briefs": [
-    {
-      "file": "2026-06-23.json",
-      "title": "Daily Brief — Monday, June 23, 2026",
-      "date": "2026-06-23"
-    },
-    {
-      "file": "2026-06-22.json",
-      "title": "Daily Brief — Monday, June 22, 2026",
-      "date": "2026-06-22"
-    },
-    {
-      "file": "2026-06-19.json",
-      "title": "Daily Brief — 19 June 2026",
-      "date": "2026-06-19"
-    },
-    {
-      "file": "2026-06-17.json",
-      "title": "Daily Brief — Wednesday, June 17, 2026",
-      "date": "2026-06-17"
-    },
-    {
-      "file": "2026-06-12.json",
-      "title": "Daily Brief — Friday, June 12, 2026",
-      "date": "2026-06-12"
-    },
-    {
-      "file": "2026-06-10.json",
-      "title": "Daily Brief — June 10, 2026",
-      "date": "2026-06-10"
-    },
-    {
-      "file": "2026-06-05.json",
-      "title": "Daily Brief — Friday, June 5, 2026",
-      "date": "2026-06-05"
-    },
-    {
-      "file": "2026-06-02.json",
-      "title": "Daily Brief — June 2, 2026",
-      "date": "2026-06-02"
-    },
-    {
-      "file": "2026-05-29.json",
-      "title": "Daily Brief — Friday, May 29, 2026",
-      "date": "2026-05-29"
-    },
-    {
-      "file": "2026-05-27.json",
-      "title": "Daily Brief — Wednesday, May 27, 2026",
-      "date": "2026-05-27"
-    },
-    {
-      "file": "2026-05-26.json",
-      "title": "Daily Brief — Tuesday, May 26, 2026",
-      "date": "2026-05-26"
-    },
-    {
-      "file": "2026-05-25.json",
-      "title": "Daily Brief — Sunday, May 25, 2026",
-      "date": "2026-05-25"
-    },
-    {
-      "file": "2026-05-24.json",
-      "title": "Daily Brief — Sunday, May 24, 2026",
-      "date": "2026-05-24"
-    },
-    {
-      "file": "2026-05-23.json",
-      "title": "Daily Brief — Saturday, May 23, 2026",
-      "date": "2026-05-23"
-    },
-    {
-      "file": "2026-05-22.json",
-      "title": "Daily Brief — Friday, May 22, 2026",
-      "date": "2026-05-22"
-    },
-    {
-      "file": "2026-05-21.json",
-      "title": "Daily Brief — Thursday, May 21, 2026",
-      "date": "2026-05-21"
-    }
-  ]
+    "briefs":  [
+                   {
+                       "date":  "2026-06-30",
+                       "title":  "Daily Brief — Monday, June 30, 2026",
+                       "file":  "2026-06-30.json"
+                   },
+                   {
+                       "date":  "2026-06-23",
+                       "title":  "Daily Brief — Monday, June 23, 2026",
+                       "file":  "2026-06-23.json"
+                   },
+                   {
+                       "date":  "2026-06-22",
+                       "title":  "Daily Brief — Monday, June 22, 2026",
+                       "file":  "2026-06-22.json"
+                   },
+                   {
+                       "date":  "2026-06-19",
+                       "title":  "Daily Brief — 19 June 2026",
+                       "file":  "2026-06-19.json"
+                   },
+                   {
+                       "date":  "2026-06-17",
+                       "title":  "Daily Brief — Wednesday, June 17, 2026",
+                       "file":  "2026-06-17.json"
+                   },
+                   {
+                       "date":  "2026-06-12",
+                       "title":  "Daily Brief — Friday, June 12, 2026",
+                       "file":  "2026-06-12.json"
+                   },
+                   {
+                       "date":  "2026-06-10",
+                       "title":  "Daily Brief — June 10, 2026",
+                       "file":  "2026-06-10.json"
+                   },
+                   {
+                       "date":  "2026-06-05",
+                       "title":  "Daily Brief — Friday, June 5, 2026",
+                       "file":  "2026-06-05.json"
+                   },
+                   {
+                       "date":  "2026-06-02",
+                       "title":  "Daily Brief — June 2, 2026",
+                       "file":  "2026-06-02.json"
+                   },
+                   {
+                       "date":  "2026-05-29",
+                       "title":  "Daily Brief — Friday, May 29, 2026",
+                       "file":  "2026-05-29.json"
+                   },
+                   {
+                       "date":  "2026-05-27",
+                       "title":  "Daily Brief — Wednesday, May 27, 2026",
+                       "file":  "2026-05-27.json"
+                   },
+                   {
+                       "date":  "2026-05-26",
+                       "title":  "Daily Brief — Tuesday, May 26, 2026",
+                       "file":  "2026-05-26.json"
+                   },
+                   {
+                       "date":  "2026-05-25",
+                       "title":  "Daily Brief — Sunday, May 25, 2026",
+                       "file":  "2026-05-25.json"
+                   },
+                   {
+                       "date":  "2026-05-24",
+                       "title":  "Daily Brief — Sunday, May 24, 2026",
+                       "file":  "2026-05-24.json"
+                   },
+                   {
+                       "date":  "2026-05-23",
+                       "title":  "Daily Brief — Saturday, May 23, 2026",
+                       "file":  "2026-05-23.json"
+                   },
+                   {
+                       "date":  "2026-05-22",
+                       "title":  "Daily Brief — Friday, May 22, 2026",
+                       "file":  "2026-05-22.json"
+                   },
+                   {
+                       "date":  "2026-05-21",
+                       "title":  "Daily Brief — Thursday, May 21, 2026",
+                       "file":  "2026-05-21.json"
+                   }
+               ]
 }
